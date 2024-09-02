@@ -1,0 +1,32 @@
+name: Spring Projects CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: [ ubuntu-latest ]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 21
+          cache: 'maven'
+
+      - name: Build and test
+        run: ./mvnw -B clean package
+
+      - name: Build Docker image
+        working-directory: ./my-app
+        shell: bash
+        run: docker build -t my-app:latest .
+
+
+
