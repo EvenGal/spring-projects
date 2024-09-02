@@ -21,6 +21,7 @@ jobs:
           cache: 'maven'
 
       - name: Build and test
+        working-directory: ./my-app
         run: ./mvnw -B clean package
 
       - name: Build Docker image
