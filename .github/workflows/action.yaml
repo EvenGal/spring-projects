@@ -28,6 +28,3 @@ jobs:
         working-directory: ./my-app
         shell: bash
         run: docker build -t my-app:latest .
-
-
-
