@@ -1,0 +1,10 @@
+services:
+  postgres:
+    container_name: person_postgres_db
+    image: 'postgres:16.0'
+    environment:
+      - 'POSTGRES_DB=person'
+      - 'POSTGRES_PASSWORD=secret_password'
+      - 'POSTGRES_USER=person'
+    ports:
+      - '5432'
