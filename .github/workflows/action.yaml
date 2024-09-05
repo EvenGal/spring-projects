@@ -21,10 +21,10 @@ jobs:
           cache: 'maven'
 
       - name: Build and test
-        working-directory: ./my-app
+        working-directory: ./house-registry
         run: ./mvnw -B clean package
 
       - name: Build Docker image
-        working-directory: ./my-app
+        working-directory: ./house-registry
         shell: bash
-        run: docker build -t my-app:latest .
+        run: docker build -t house-registry:latest .
