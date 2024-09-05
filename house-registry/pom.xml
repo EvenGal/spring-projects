@@ -8,7 +8,7 @@
         <version>3.3.3</version>
     </parent>
     <groupId>com.evengal</groupId>
-    <artifactId>my-app</artifactId>
+    <artifactId>house-registry</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
 
