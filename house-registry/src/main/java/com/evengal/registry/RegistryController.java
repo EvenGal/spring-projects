@@ -1,7 +1,6 @@
 package com.evengal.registry;
 
 import com.evengal.registry.house.House;
-import com.evengal.registry.house.PropertyType;
 import com.evengal.registry.person.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
