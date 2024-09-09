@@ -1,5 +1,5 @@
 # Spring Projects
-Just some fun hobby projects using Spring Boot. Trying to use Spring Boot after using Quarkus for some while
+Just some fun hobby projects using Spring Boot. Trying to use Spring Boot after using Quarkus for some time
 
 # Add-ons
 - Dependabot
