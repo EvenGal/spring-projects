@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS Person CASCADE;
-DROP TABLE IF EXISTS House CASCADE;
+DROP TABLE IF EXISTS "Person" CASCADE;
+DROP TABLE IF EXISTS "House" CASCADE;
 DROP TYPE IF EXISTS property_type CASCADE;
 
 CREATE TYPE property_type AS ENUM (
@@ -10,27 +10,29 @@ CREATE TYPE property_type AS ENUM (
     'HYTTE'
 );
 
-CREATE TABLE IF NOT EXISTS House (
+CREATE TABLE IF NOT EXISTS "House" (
     id BIGSERIAL NOT NULL PRIMARY KEY,
     address TEXT NOT NULL UNIQUE,
-    type property_type
+    "type" property_type
 );
 
-CREATE TABLE IF NOT EXISTS Person (
+CREATE TABLE IF NOT EXISTS "Person" (
     id BIGSERIAL NOT NULL PRIMARY KEY,
     name TEXT NOT NULL,
     age INT,
     gender TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
     house_id BIGINT,
-    FOREIGN KEY (house_id) REFERENCES House(id)
+    house_key BIGINT,
+    FOREIGN KEY (house_id) REFERENCES "House"(id)
 );
 
-INSERT INTO House (address, type) VALUES
+INSERT INTO "House" (address, "type") VALUES
 ('Tore Hals Mejdells vei 12, 0751 OSLO', 'LEILIGHET'),
-('Røaveien 71, 0751 OSLO', 'ENEBOLIG');
+('Røaveien 71, 0751 OSLO', 'ENEBOLIG'),
+('Ensjøveien 92, 9562 Oslo', 'LEILIGHET');
 
-INSERT INTO Person (name, age, gender, email, house_id) VALUES
+INSERT INTO "Person" (name, age, gender, email, house_id) VALUES
 ('John Doe', 34, 'Male', 'john.doe@example.com', 1),
 ('Jane Smith', 29, 'Female', 'jane.smith@example.com', 1),
 ('Michael Brown', 45, 'Male', 'michael.brown@example.com', 2),

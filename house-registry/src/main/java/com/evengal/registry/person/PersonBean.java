@@ -29,4 +29,8 @@ public class PersonBean {
     public Person addPerson(Person person) {
         return personRepository.save(person);
     }
+
+    public List<Person> findAllResidentsOfAHouse(Long id) {
+        return personRepository.findAllResidentsOfAHouse(id);
+    }
 }
