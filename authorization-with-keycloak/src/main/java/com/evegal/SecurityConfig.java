@@ -28,16 +28,22 @@ public class SecurityConfig {
     interface AuthoritiesConverter extends Converter<Map<String, Object>, Collection<GrantedAuthority>> {
     }
 
+    /*
+     * Get all roles
+     */
     @Bean
     AuthoritiesConverter realmRolesAuthoritiesConverter() {
         return claims -> {
             final var realmAccess = Optional.ofNullable((Map<String, Object>) claims.get("realm_access"));
-            final var roles =
-                    realmAccess.flatMap(map -> Optional.ofNullable((List<String>) map.get("roles")));
+            final var roles = realmAccess.flatMap(map -> Optional.ofNullable((List<String>) map.get("roles")));
             return roles.map(List::stream).orElse(Stream.empty()).map(SimpleGrantedAuthority::new)
                     .map(GrantedAuthority.class::cast).toList();
         };
     }
+
+    /*
+     * Get all scopes from JWT
+     */
 
     @Bean
     JwtAuthenticationConverter authenticationConverter(
@@ -47,6 +53,11 @@ public class SecurityConfig {
                 .setJwtGrantedAuthoritiesConverter(jwt -> authoritiesConverter.convert(jwt.getClaims()));
         return jwtAuthenticationConverter;
     }
+
+    /*
+     * Security filter chain will always make sure that each request is authenticated
+     * Disabling CSRF as this is a stateless REST API
+     */
 
     @Bean
     SecurityFilterChain resourceServerSecurityFilterChain(HttpSecurity http,
@@ -64,8 +75,7 @@ public class SecurityConfig {
         });
 
         http.authorizeHttpRequests(requests -> {
-            requests.requestMatchers("/me").authenticated();
-            requests.anyRequest().denyAll();
+            requests.anyRequest().authenticated();
         });
 
         return http.build();

@@ -1,6 +1,6 @@
 services:
   keycloak:
-    container_name: baeldung-keycloak.openid-provider
+    container_name: main-keycloak.openid-provider
     image: quay.io/keycloak/keycloak:25.0.1
     command:
       - start-dev
