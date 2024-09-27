@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/openjdk-21:1.19
+FROM openjdk:22-jdk
 
 ENV LANGUAGE='en_US:en'
 
