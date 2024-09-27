@@ -4,6 +4,10 @@ updates:
     directory: "/house-registry" 
     schedule:
       interval: "daily"
+  - package-ecosystem: "maven"
+    directory: "/authorization-with-keycloak"
+    schedule:
+      interval: "daily"
   - package-ecosystem: "github-actions"
     directory: "/" 
     schedule:
