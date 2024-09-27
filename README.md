@@ -9,3 +9,6 @@ Just some fun hobby projects using Spring Boot. Trying to use Spring Boot after 
 
 ## House Registry
 - Simple API for retrieving houses and residents from a registry with some metadata
+
+## Authorization With Keycloak
+- Testing some keycloak stuff
