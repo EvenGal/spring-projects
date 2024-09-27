@@ -2,7 +2,7 @@
 
 ## How to run:
 
-Copy the .env.template file and add admin as password:
+Copy the .env.template file and add "admin" as password:
 
 [.env.template](.env.template)
 
