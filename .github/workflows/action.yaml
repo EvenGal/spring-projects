@@ -28,3 +28,12 @@ jobs:
         working-directory: ./house-registry
         shell: bash
         run: docker build -t house-registry:latest .
+
+      - name: Build and test
+        working-directory: ./authorization-with-keycloak
+        run: ./mvnw -B clean package
+
+      - name: Build Docker image
+        working-directory: ./authorization-with-keycloak
+        shell: bash
+        run: docker build -t authorization-with-keycloak:latest .
