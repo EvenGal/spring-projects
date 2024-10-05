@@ -70,9 +70,7 @@ public class SecurityConfig {
 
         http.sessionManagement(sessions -> {
             sessions.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        }).csrf(csrf -> {
-            csrf.disable();
-        });
+        }).csrf();
 
         http.authorizeHttpRequests(requests -> {
             requests.anyRequest().authenticated();
